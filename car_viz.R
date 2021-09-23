@@ -12,7 +12,8 @@ mtcars_mpg2 <- mtcars[mtcars$mpg < 20,]
 mtcars_mpg2 <- mtcars_mpg2[, c(1,2,3,4,10)]
 
 # read the R file hand_functions.R so that it can be used
-# notice that with echo = TRUE 
+# notice that with echo = TRUE,each expression is printed after parsing, 
+#before evaluation
 source(file = "hand_functions.R", echo = TRUE)
 
 # Now use the function from hand_functions.R
@@ -24,7 +25,7 @@ sp_out <- sum_special(mtcars_mpg2)
 # 
 # esquisser(data = mtcars_mpg2, viewer = "browser")
 
-
+library(ggplot2)
 
 ggplot(mtcars_mpg2) +
   aes(x = disp, y = mpg) +
@@ -36,13 +37,15 @@ ggplot(mtcars_mpg2) +
 # note that this boxplot cannot be made with esquisse() unless
 # the data is adjusted.  What adjustment is needed?
 
-
+#Answer: x<-as.factor(cyl)
 ggplot(mtcars_mpg2, aes(x=as.factor(cyl), y=mpg)) + 
   geom_boxplot(fill="slateblue", alpha=0.2) + 
   xlab("cyl")
 
-
-
+x<-as.factor(mtcars_mpg2$cyl)
+ggplot(mtcars_mpg2) + 
+  geom_boxplot(aes(x=x, y=mpg),fill="slateblue", alpha=0.2) + 
+  xlab("cyl")
 
 
 

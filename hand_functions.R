@@ -1,7 +1,7 @@
 
 
 sum_special <- function(df_x){
-  
+  ## df = 1
   ## sum_special calculates data summary statistics
   ## the input param df_x is the data frame of input values
   
